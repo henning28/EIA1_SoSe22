@@ -3,42 +3,51 @@
     <head>
         <meta charset="utf-8">
         <title>Portfolio</title>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <header>
                 <div class="header">
-                    <section>
-                    <div class="logo_container">
-                        <img src="images/logo.svg" class="logo_container">
+                    <div class="inner_header">
+                        <div class="logo_container">
+                            <div class="logo"><a href="cssportfolio.html"> <img src="images/logo.svg"></a></div>
+                        </div>
+                            <ul class="navigation">
+                                <a href="cssportfolio.html"><li>Portfolio</li></a>
+                                <a href="cssaboutme.html"><li>About</li></a>
+                                <a href="csscontact.html"><li>Contact</li></a>
+                            </ul>
                     </div>
-                    <div class="nav">
-                        <ul>
-                            <a href="cssportfolio.html"><li>Portfolio</li></a>
-                            <a href="cssaboutme.html"><li>About</li></a>
-                            <a href="csscontact.html"><li>Contact</li></a>
-                        </ul>
-                    </div>
-                    </section>
                 </div>
         </header>
         <main>
-            <section>
-                <h1>Fotos</h1>
-                    <img src="../L02/L02Fotos/foto1.jpg" class="images"> <br>
-                    <img src="../L02/L02Fotos/foto2.jpg" class="images"> <br>
-                    <img src="../L02/L02Fotos/foto3.jpg" class="images"> <br>
-                    <img src="../L02/L02Fotos/foto4.jpg" class="images"> <br>
-                <h1>Videos</h2>
-                    <video controls class="images"> <source src="../L02/L02Videos/clip1.mp4" type="video/mp4"> </video> <br>
-                    <video controls class="images"> <source src="../L02/L02Videos/clip2.mp4" type="video/mp4"> </video> <br>
-                    <video controls class="images"> <source src="../L02/L02Videos/clip3.mp4" type="video/mp4"> </video> <br>
-                    <video controls class="images"> <source src="../L02/L02Videos/clip4.mp4" type="video/mp4"> </video> <br>
-            </section>
+            <div class="headlines"><h1>Fotos</h1></div>
+                <div class="images">
+                    <img src="../L02/L02Fotos/foto1.jpg" class="images">
+                    <img src="../L02/L02Fotos/foto2.jpg" class="images">
+                    <img src="../L02/L02Fotos/foto3.jpg" class="images">
+                    <img src="../L02/L02Fotos/foto4.jpg" class="images">
+                </div>
+            <div class="headlines"><h2>Videos</h2></div>
+                <div class="images">
+                    <video controls class="images"> <source src="../L02/L02Videos/clip1.mp4" type="video/mp4"> </video>
+                    <video controls class="images"> <source src="../L02/L02Videos/clip2.mp4" type="video/mp4"> </video>
+                    <video controls class="images"> <source src="../L02/L02Videos/clip3.mp4" type="video/mp4"> </video>
+                    <video controls class="images"> <source src="../L02/L02Videos/clip4.mp4" type="video/mp4"> </video>
+                </div>
+            </div>
         </main>
         <footer>
                 <div class="footer">
-                    Footer
+                    <div class="footer_parts">EIA1 <br> <br> Musterstraße 1 <br> 12345 Musterstadt <br> Telefon: 01234 567890 <br> max@mustermann.de </div>
+                    <div class="footer_parts">
+                        Follow Me <br> <br>
+                        <a href="https://www.instagram.com/" target="_blank"><img src="images/icon_insta.svg" class="icons"></a>
+                        <a href="https://www.youtube.com/" target="_blank"><img src="images/icon_youtube.svg" class="icons"></a>
+                        <a href="https://www.linkedin.com/" target="_blank"><img src="images/icon_linkedin.svg" class="icons"></a>
+                    </div>
+                    <div class="footer_parts">Copyright © 2022 EIA1 <br> All rights reserved</div>
                 </div>
         </footer>
     </body>
