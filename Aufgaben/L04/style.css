@@ -5,6 +5,13 @@
     text-decoration: none;
 }
 
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
 .header{
     background-image: url(../L02/L02Fotos/foto1_big.jpg);
     background-repeat: no-repeat;
@@ -35,6 +42,7 @@
 }
 
 .navigation{
+    display: flex;
     float: right;
     height: 100%;
     color: white;
@@ -56,21 +64,30 @@
     display: table-cell;
     vertical-align: middle;
     height: 100%;
-    color: white;
+    color: #a0a0a0;
     font-size: 16px;
+    position: relative;
+    letter-spacing: 0.5px;
 }
 
-.navigation:after{
-    content: '';
+.navigation a li::after{
+    content: "";
     position: absolute;
-    bottom: -10px;
+    background-color: #ffffff;
+    height: 2px;
+    width: 0%;
     left: 0;
-    width: 100%;
-    height: 4px;
-    background-color: green;
-
+    bottom: 3vh;
+    transition: 0.3s;
 }
 
+.navigation a li:hover{
+    color: #ffffff;
+}
+
+.navigation a li:hover::after{
+    width: 100%;
+}
 
 .headlines{
     display: flex;
@@ -104,7 +121,114 @@ h2 {
     margin: 10px 0px;
 }
 
-.footer {
+.contact_headlines{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 800px;
+    margin: 0 auto;
+    padding: 40px 0px 20px 0px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.contact{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 800px;
+    margin: 0 auto;
+    font-weight: 400;
+}
+
+.input{
+    width: 800px;
+    margin: 0 auto;
+}
+
+.input_container{
+    width: 800px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+textarea{
+    display: block;
+    background: #eaeaea;
+    width: 300px;
+    padding: 10px;
+    resize: none;
+    border: none;
+}
+
+textarea:focus::placeholder{
+    color: transparent;
+}
+
+textarea::placeholder{
+    color:#222;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: color 0.3s ease;
+
+}
+
+.input_regular{
+    width: 300px;
+    background: #eaeaea;
+    border: none;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input:focus::placeholder{
+    color: transparent;
+}
+
+input::placeholder{
+    color: #222;
+    transition: color 0.3s ease;
+}
+
+.button_container{
+    display: flex;
+    width: 800px;
+    margin: 0 auto;
+}
+
+button{
+    padding: 10px;
+    border: none;
+    color:#222;
+}
+
+.aboutme_headlines{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0px 25px 0px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.float_img{
+    display:flex;
+    justify-content: center;
+    padding: 0px 0px 20px 0px;
+}
+
+.aboutme_container{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 800px;
+    margin: 0 auto;
+    font-weight: 400;
+}
+
+.aboutme_text{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+}
+
+
+.footer{
     display: flex;
     justify-content: center;
     height: 250px;

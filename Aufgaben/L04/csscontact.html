@@ -1,29 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="utf-8">
         <title>Contact</title>
-        <style>
-            body {
-                font-family: calibri;
-                font-size: big;
-                background: #eee;
-            }
-            </style>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <header>
-            <h1>Contact</h1>
+                <div class="header">
+                    <div class="inner_header">
+                        <div class="logo_container">
+                            <div class="logo"><a href="cssportfolio.html"> <img src="images/logo.svg"></a></div>
+                        </div>
+                            <ul class="navigation">
+                                <a href="cssportfolio.html" target="_blank"><li>Portfolio</li></a>
+                                <a href="cssaboutme.html" target="_blank"><li>About</li></a>
+                                <a class="current" href="csscontact.html"><li>Contact</li></a>
+                            </ul>
+                    </div>
+                </div>
         </header>
         <main>
-            <p style="font-size:22px">E-Mail: henning.reck@hs-furtwangen.de </p>
-            <p style="font-size:22px">GitHub: https://github.com/henning28 </p>
+            <div class="contact_headlines"><h3 class="contact_headlines">Contact</h3></div>
+            <p class="contact">EIA1 <br> <br> Musterstraße 1 <br> 78050 Villingen-Schwenningen <br> Telefon: 01234 567890 <br> <br> Send me a request: </p> <br>
+            <div class="input">
+                <input class="input_regular" type="text" placeholder="Your Name">
+            </div> <br>
+            <div class="input">
+                <input class="input_regular" type="text" rows="5" placeholder="Your E-Mail">
+            </div> <br>
+            <div class="input_container">
+                <textarea id="my-text" rows="8" placeholder="Your Message"></textarea>
+            </div> <br>
+            <div class="button_container">
+                <button>Send</button>
+            </div>
+
         </main>
-            <br>
         <footer>
-            <p style="font-size:18px">weitere Links</p>
-            <a href="cssportfolio.html"target="_blank"><p style="font-size:18px">Mein Portfolio</p></a>
-            <a href="cssaboutme.html"target="_blank"><p style="font-size:18px">About Me</p></a>
+                <div class="footer">
+                    <div class="footer_parts">EIA1 <br> <br> Musterstraße 1 <br> 78050 Villingen-Schwenningen <br> Telefon: 01234 567890 <br> henning.reck@hs-furtwangen.de </div>
+                    <div class="footer_parts">
+                        Follow Me <br> <br>
+                        <a href="https://www.instagram.com/" target="_blank"><img src="images/icon_insta.svg" class="icons"></a>
+                        <a href="https://www.youtube.com/" target="_blank"><img src="images/icon_youtube.svg" class="icons"></a>
+                        <a href="https://www.linkedin.com/" target="_blank"><img src="images/icon_linkedin.svg" class="icons"></a>
+                    </div>
+                    <div class="footer_parts">Copyright © 2022 EIA1 <br> All rights reserved</div>
+                </div>
         </footer>
     </body>
 </html>
