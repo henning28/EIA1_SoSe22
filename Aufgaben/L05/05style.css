@@ -11,49 +11,56 @@
     box-sizing: border-box;
 }
 
-/* .banner{
-    width: 100%;
-    padding: 5px;
-    background-color: grey;
-    float: right;
+.banner_container{
+    width: 500px;
+    text-align: center;
+    font-size: 13px;
+    color: rgb(255, 255, 255);
+    z-index: 100;
     position: fixed;
+    right: 0;
     font-family: 'IBM Plex Sans', sans-serif;
-    transform: rotate(15deg);
-} */
+    font-weight: 600;
+    transform: rotate(30deg);
+}
+
+.banner{
+    background-color: rgb(0, 0, 0);
+    transform:translateX(150px) translateY(-50px);
+    box-shadow:0px 0px 20px rgb(0, 0, 0);
+    padding: 10px;
+}
+
+.internship{
+    font-size: 23px;
+}
 
 .header{
-    /* background-image: url(../L02/L02Fotos/foto1_big.jpg); */
-    /* background-image: url(images/themelodicblue.jpg); */
-    background-image: url(../../../L05BilderPre/test3.jpg);
+    background-image: url(../L02/L02Fotos/foto1_big.jpg);
     background-repeat: no-repeat;
     background-position: center top;
     background-size: cover;
+    display:flex;
     width: 100%;
-    min-width: 1000px;
+    min-width: 800px;
     min-height: 500px;
     transition: 1s;
-
-    animation-name: animate;
+    animation: animate 7s infinite;
     animation-direction: alternate-reverse;
-    animation-duration: 10s;
-    animation-fill-mode: forwards;
-    animation-iteration-count: infinite;
-    animation-play-state: running;
     animation-timing-function: ease-in-out;
 }
 
 @keyframes animate{
     0%{
-        background-image: url(../L02/L02Fotos/foto1_big.jpg);
+        background-image: url(images/skybox.jpg); 
     }
     50%{
         background-image: url(images/themelodicblue.jpg);
     }
     100%{
-        background-image: url(images/skybox.jpg);
+        background-image: url(../L02/L02Fotos/foto1_big.jpg);
     }
 }
-
 
 .inner_header{
     width: 800px;
@@ -76,8 +83,10 @@
 }
 
 .navigation{
-    display: flex;
+    display: block;
     float: right;
+    position: relative;
+    right: 0;
     height: 100%;
     color: rgb(255, 255, 255);
     font-family: Arial, Helvetica, sans-serif;
@@ -188,6 +197,7 @@ h4{
     align-items: center;
     margin: 10px 0px;
     transform: scale(1);
+    opacity: 100%;
 }
 
 .images{
