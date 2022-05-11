@@ -29,7 +29,6 @@ var wachstumsrate_pr_ir : number = (einwohnerzahl_ir / einwohnerzahl_ir_08) * 10
 var wachstumsrate_ir : number = einwohnerzahl_ir - einwohnerzahl_ir_08
 
 
-
 const eu: HTMLImageElement = document.getElementById("eu") as HTMLImageElement;
 eu.addEventListener("click", function (): void {
     document.getElementById("var_einwohner").innerText = "447,01 Mio"
@@ -77,5 +76,35 @@ ireland.addEventListener("click", function (): void {
     document.getElementById("var_wachstumsrate_pr").innerText = "11,5%"
     document.getElementById("var_wachstumsrate").innerText = "0,52 Mio"
     document.getElementById("land_name").innerText = "Gesamtzahl Einwohnerinnen und Einwohner in Irland im Jahr 2021"
+}
+)
+
+const euchart: HTMLDivElement = document.getElementById("chart") as HTMLDivElement
+    eu.addEventListener("click" , function (): void {
+    euchart.style.height = "100%"
+}
+)
+
+const germanychart: HTMLDivElement = document.getElementById("chart") as HTMLDivElement
+    germany.addEventListener("click" , function (): void {
+    germanychart.style.height = "8.4%"
+}
+)
+
+const francechart: HTMLDivElement = document.getElementById("chart") as HTMLDivElement
+    france.addEventListener("click" , function (): void {
+    francechart.style.height = "5.6%"
+}
+)
+
+const italychart: HTMLDivElement = document.getElementById("chart") as HTMLDivElement
+    italy.addEventListener("click" , function (): void {
+    italychart.style.height = "1.4%"
+}
+)
+
+const irelandchart: HTMLDivElement = document.getElementById("chart") as HTMLDivElement
+    ireland.addEventListener("click" , function (): void {
+    irelandchart.style.height = "1.1%"
 }
 )

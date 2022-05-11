@@ -63,4 +63,24 @@ ireland.addEventListener("click", function () {
     document.getElementById("var_wachstumsrate").innerText = "0,52 Mio";
     document.getElementById("land_name").innerText = "Gesamtzahl Einwohnerinnen und Einwohner in Irland im Jahr 2021";
 });
+const euchart = document.getElementById("chart");
+eu.addEventListener("click", function () {
+    euchart.style.height = "100%";
+});
+const germanychart = document.getElementById("chart");
+germany.addEventListener("click", function () {
+    germanychart.style.height = "8.4%";
+});
+const francechart = document.getElementById("chart");
+france.addEventListener("click", function () {
+    francechart.style.height = "5.6%";
+});
+const italychart = document.getElementById("chart");
+italy.addEventListener("click", function () {
+    italychart.style.height = "1.4%";
+});
+const irelandchart = document.getElementById("chart");
+ireland.addEventListener("click", function () {
+    irelandchart.style.height = "1.1%";
+});
 //# sourceMappingURL=script.js.map
