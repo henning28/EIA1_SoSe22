@@ -55,7 +55,7 @@
                 <img src="images/finland.png" height="76px" class="finland">
                 <h5>Finnland</h5>
             </div>
-            <div class="wrapper active">
+            <div class="wrapper" id="france">
                 <img src="images/france.png" height="76px" class="france">
                 <h5>Frankreich</h5>
             </div>
@@ -67,11 +67,11 @@
                 <img src="images/hungary.png" height="76px" class="hungary">
                 <h5>Ungarn</h5>
             </div>
-            <div class="wrapper">
+            <div class="wrapper" id="ireland">
                 <img src="images/ireland.png" height="76px" class="ireland">
                 <h5>Irland</h5>
             </div>
-            <div class="wrapper">
+            <div class="wrapper" id="italy">
                 <img src="images/italy.png" height="76px" class="italy">
                 <h5>Italien</h5>
             </div>
@@ -128,24 +128,32 @@
         </div>
     </nav>
 
-    <img src="images/eu_stars.png" class="stars">
-    <h1>
-        Einwohnerzahl in der europäischen Union
-    </h1>
-
     <main>
+        <div class="chartStarWrapper">
+            <img src="images/eu_stars.png" class="stars" id="eu">
+            
+            <div class="chartWrapper">
+                <div class="chart"></div>
+            </div>
+
+        </div>
+        
+        <h1>
+            Einwohnerzahl in der europäischen Union
+        </h1>
+
         <section>
             <h2 id="var_einwohner">65,3 Mio</h2>
-            <p id="land_name">Gesamtzahl Einwohnerinnen und Einwohner in Frankreich in 2021</p>
+            <p id="land_name">Gesamtzahl Einwohnerinnen und Einwohner in Frankreich im Jahr 2021</p>
         </section>
 
         <section>
-            <h2 id="var_gesamtzahl_pr">14,6%</h2>
+            <h2 id="var_gesamtzahl_pr">5,6%</h2>
             <p>Relativ zur Gesamtzahl in der EU</p>
         </section>
 
         <section>
-            <h2 id="var_wachstumsrate_pr">5,1%</h2>
+            <h2 id="var_wachstumsrate_pr">5,09%</h2>
             <p>Wachstumsrate seit 2008</p>
         </section>
 
@@ -154,9 +162,7 @@
             <p>Wachstumsrate gesamt zwischen 2008 and 2021</p>
         </section>
     </main>
-    <!-- <div id="testone">
-        <p id="text">Text</p>
-    </div> -->
+
     <footer>
         <p>Quelle: https://www.statista.com/</p>
     </footer>

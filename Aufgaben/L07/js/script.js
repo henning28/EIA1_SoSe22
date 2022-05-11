@@ -23,20 +23,14 @@ var einwohnerzahl_ir_08 = 4.52;
 var gesamtzahl_pr_ir = (einwohnerzahl_eu / einwohnerzahl_ir) * 100;
 var wachstumsrate_pr_ir = (einwohnerzahl_ir / einwohnerzahl_ir_08) * 100;
 var wachstumsrate_ir = einwohnerzahl_ir - einwohnerzahl_ir_08;
-// function consoleOutput(land_name: string, land_einwohnerzahl: number, land_gesamtzahl_pr: number, land_wachstumsrate_pr:number, land_wachstumsrate:number) {
-//     console.log(land_name + " hat " + land_einwohnerzahl + " Mio Einwohnerinnen und Einwohner im Jahr 2021. Relativ zur Gesamtzahl der Einwohner der EU sind das " + gesamtzahl_pr_de.toFixed(1).slice(2) + 
-//     "%. Die Einwohnerwachstumsrate von " + land_name + " zwischen 2008 und 2021 beträgt " + wachstumsrate_pr_de.toFixed(2).slice(2) + "%. Das ist ein Zuwachs von " + wachstumsrate_de.toFixed(2) + " Mio Menschen.")
-// }
-// consoleOutput(land_de, einwohnerzahl_de, gesamtzahl_pr_de, wachstumsrate_pr_de, wachstumsrate_de);
-// consoleOutput(land_fr, einwohnerzahl_fr, gesamtzahl_pr_fr, wachstumsrate_pr_fr, wachstumsrate_fr);
-// consoleOutput(land_it, einwohnerzahl_it, gesamtzahl_pr_it, wachstumsrate_pr_it, wachstumsrate_it);
-// consoleOutput(land_ir, einwohnerzahl_ir, gesamtzahl_pr_ir, wachstumsrate_pr_ir, wachstumsrate_ir);
-// const myParagraph: HTMLParagraphElement = document.createElement("p");
-// myParagraph.className = "myClass";
-// myParagraph.innerText = "Hello World";
-// const myWrapper: HTMLDivElement = document.getElementById("wrapper") as HTMLDivElement
-// myWrapper.appendChild(myParagraph)
-//console.log(myWrapper);
+const eu = document.getElementById("eu");
+eu.addEventListener("click", function () {
+    document.getElementById("var_einwohner").innerText = "447,01 Mio";
+    document.getElementById("var_gesamtzahl_pr").innerText = "100%";
+    document.getElementById("var_wachstumsrate_pr").innerText = "ca 2,3%";
+    document.getElementById("var_wachstumsrate").innerText = "ca. 10,01 Mio";
+    document.getElementById("land_name").innerText = "Gesamtzahl Einwohnerinnen und Einwohner in der EU im Jahr 2021";
+});
 const germany = document.getElementById("germany");
 germany.addEventListener("click", function () {
     document.getElementById("var_einwohner").innerText = "83,16 Mio";
@@ -44,5 +38,29 @@ germany.addEventListener("click", function () {
     document.getElementById("var_wachstumsrate_pr").innerText = "1,41%";
     document.getElementById("var_wachstumsrate").innerText = "1,16 Mio";
     document.getElementById("land_name").innerText = "Gesamtzahl Einwohnerinnen und Einwohner in Deutschland in 2021";
+});
+const france = document.getElementById("france");
+france.addEventListener("click", function () {
+    document.getElementById("var_einwohner").innerText = "65,3 Mio";
+    document.getElementById("var_gesamtzahl_pr").innerText = "5,6%";
+    document.getElementById("var_wachstumsrate_pr").innerText = "5,09%";
+    document.getElementById("var_wachstumsrate").innerText = "3,16 Mio";
+    document.getElementById("land_name").innerText = "Gesamtzahl Einwohnerinnen und Einwohner in Frankreich in 2021";
+});
+const italy = document.getElementById("italy");
+italy.addEventListener("click", function () {
+    document.getElementById("var_einwohner").innerText = "59,58 Mio";
+    document.getElementById("var_gesamtzahl_pr").innerText = "1,4%";
+    document.getElementById("var_wachstumsrate_pr").innerText = "0,98%";
+    document.getElementById("var_wachstumsrate").innerText = "0,58 Mio";
+    document.getElementById("land_name").innerText = "Gesamtzahl Einwohnerinnen und Einwohner in Italien im Jahr 2021";
+});
+const ireland = document.getElementById("ireland");
+ireland.addEventListener("click", function () {
+    document.getElementById("var_einwohner").innerText = "5,04 Mio";
+    document.getElementById("var_gesamtzahl_pr").innerText = "1,1%";
+    document.getElementById("var_wachstumsrate_pr").innerText = "11,5%";
+    document.getElementById("var_wachstumsrate").innerText = "0,52 Mio";
+    document.getElementById("land_name").innerText = "Gesamtzahl Einwohnerinnen und Einwohner in Irland im Jahr 2021";
 });
 //# sourceMappingURL=script.js.map
