@@ -46,6 +46,8 @@ germany.addEventListener("click", function (): void {
     document.getElementById("var_wachstumsrate_pr").innerText = "1,41%"
     document.getElementById("var_wachstumsrate").innerText = "1,16 Mio"
     document.getElementById("land_name").innerText = "Gesamtzahl Einwohnerinnen und Einwohner in Deutschland in 2021"
+    germany.style.opacity = "100%"
+    germany.style.transform = "scale(1.1)"
 }
 )
 
@@ -56,6 +58,8 @@ france.addEventListener("click", function (): void {
     document.getElementById("var_wachstumsrate_pr").innerText = "5,09%"
     document.getElementById("var_wachstumsrate").innerText = "3,16 Mio"
     document.getElementById("land_name").innerText = "Gesamtzahl Einwohnerinnen und Einwohner in Frankreich in 2021"
+    france.style.opacity = "100%"
+    france.style.transform = "scale(1.1)"
 }
 )
 
@@ -66,6 +70,8 @@ italy.addEventListener("click", function (): void {
     document.getElementById("var_wachstumsrate_pr").innerText = "0,98%"
     document.getElementById("var_wachstumsrate").innerText = "0,58 Mio"
     document.getElementById("land_name").innerText = "Gesamtzahl Einwohnerinnen und Einwohner in Italien im Jahr 2021"
+    italy.style.opacity = "100%"
+    italy.style.transform = "scale(1.1)"
 }
 )
 
@@ -76,6 +82,8 @@ ireland.addEventListener("click", function (): void {
     document.getElementById("var_wachstumsrate_pr").innerText = "11,5%"
     document.getElementById("var_wachstumsrate").innerText = "0,52 Mio"
     document.getElementById("land_name").innerText = "Gesamtzahl Einwohnerinnen und Einwohner in Irland im Jahr 2021"
+    ireland.style.opacity = "100%"
+    ireland.style.transform = "scale(1.1)"
 }
 )
 
