@@ -33,10 +33,10 @@ eu.addEventListener("click", function () {
 });
 const germany = document.getElementById("germany");
 germany.addEventListener("click", function () {
-    document.getElementById("var_einwohner").innerText = "83,16 Mio";
-    document.getElementById("var_gesamtzahl_pr").innerText = "8,4%";
-    document.getElementById("var_wachstumsrate_pr").innerText = "1,41%";
-    document.getElementById("var_wachstumsrate").innerText = "1,16 Mio";
+    document.getElementById("var_einwohner").innerText = einwohnerzahl_de.toFixed(2) + " Mio";
+    document.getElementById("var_gesamtzahl_pr").innerText = gesamtzahl_pr_de.toFixed(2).slice(2) + " %";
+    document.getElementById("var_wachstumsrate_pr").innerText = wachstumsrate_pr_de.toFixed(2).slice(2) + " %";
+    document.getElementById("var_wachstumsrate").innerText = wachstumsrate_de.toFixed(2).slice(2) + " Mio";
     document.getElementById("land_name").innerText = "Gesamtzahl Einwohnerinnen und Einwohner in Deutschland in 2021";
     germany.style.opacity = "100%";
     germany.style.transform = "scale(1.1)";
