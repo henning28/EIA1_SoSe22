@@ -1,12 +1,12 @@
 * {
     margin: 0;
-    background-color: #1f1f1f;
+    background-color: #000000;
 }
 
 .key_container{
     display: flex;
     background-color: #ffffff00;
-    margin: 200px auto;
+    margin: 150px auto 0px auto;
     width: 700px;
     height: 450px;
 }
@@ -73,5 +73,11 @@
     border-style: solid;
     border-radius: 10px;
     border-width: 3px;
+}
 
+#playbutton{
+    display: flex;
+    height: 140px;
+    width: 140px;
+    margin: 100px auto;
 }
