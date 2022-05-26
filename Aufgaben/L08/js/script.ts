@@ -1,4 +1,5 @@
 
+namespace l08 {
 
 function playSample(file:string) {
     var sound:HTMLAudioElement = new Audio("assets/keyboard/" + file);
@@ -55,4 +56,5 @@ function playInterval(){
 
 }
 
-document.querySelector("#playbutton").addEventListener("click", playInterval)
+document.querySelector("#playbutton").addEventListener("click", playInterval) 
+}

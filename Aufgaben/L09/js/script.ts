@@ -1,3 +1,4 @@
+namespace keyboard {
 
 function playSample(file: string): void {
     var sound: HTMLAudioElement = new Audio("assets/keyboard/" + file);
@@ -42,17 +43,59 @@ document.querySelector("#gf.blackkey_three").addEventListener("click", function(
     playSample("gf.mp3");
 });
 
-var sounds: string [] = ["a.mp3", "b.mp3", "a.mp3", "b.mp3", "e.mp3", "a.mp3", "c.mp3"];
+
+var sounds: string [] = ["a.mp3", "b.mp3", "a.mp3", "b.mp3", "e.mp3"];
+var active: number = 0;
+let clear: number = 0;
+var playbutton: HTMLDivElement = document.querySelector("#playbutton");
+var font: HTMLElement = document.querySelector("#font");
+
+// playbutton.addEventListener("click", playInterval);
+
+document.querySelector("#playbutton").addEventListener("click", function(): void {
+   if (playbutton.getAttribute("class") == "stop") {
+        playbutton.setAttribute("class", "start");
+   } else {
+        playbutton.setAttribute("class", "stop");
+   }
+});
+
+document.querySelector(".start").addEventListener("click", () => {
+    clear = setInterval(playInterval, 500);
+});
+
+document.querySelector(".stop").addEventListener("click", () => {
+    clearInterval(clear);
+});
 
 function playInterval(): void {
-    for (let active: number = 0; active <= 5; active++) {
-        console.log(sounds[active]);
-        setInterval(function(): void {
-        var sound: HTMLAudioElement = new Audio("assets/keyboard/" + sounds[active]);
-        sound.play();
-    },
-                    1500);
+    var sound: HTMLAudioElement = new Audio("assets/keyboard/" + sounds[active]);
+    sound.play();
+    active++;
+    if (active == 5) {
+        active = 0;
     }
 }
 
-document.querySelector("#playbutton").addEventListener("click", playInterval);
+font.addEventListener("click", function(): void {
+    if (font.getAttribute("class") == "fa-solid fa-stop fa-10x") {
+         font.setAttribute("class", "");
+    } else {
+         font.setAttribute("class", "fa-solid fa-stop fa-10x");
+    }
+ });
+
+
+}
+
+
+// function playInterval(): void {
+//     interval = setInterval(function(): void {
+//         var sound: HTMLAudioElement = new Audio("assets/keyboard/" + sounds[active]);
+//         sound.play();
+//         active++;
+//         if (active == 5) {
+//             active = 0;
+//         }
+//     },                     500);
+// }
