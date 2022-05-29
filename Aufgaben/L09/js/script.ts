@@ -3,12 +3,6 @@ function playSample(file: string): void {
     sound.play();
 }
 
-document.querySelector("#a.whitekey").addEventListener("click", function(): void {
-    playSample("a.mp3");
-});
-document.querySelector("#b.whitekey").addEventListener("click", function(): void {
-    playSample("b.mp3");
-});
 document.querySelector("#c.whitekey").addEventListener("click", function(): void {
     playSample("c.mp3");
 });
@@ -19,26 +13,32 @@ document.querySelector("#e.whitekey").addEventListener("click", function(): void
     playSample("e.mp3");
 });
 document.querySelector("#f.whitekey").addEventListener("click", function(): void {
-    playSample("a.mp3");
+    playSample("f.mp3");
 });
 document.querySelector("#g.whitekey").addEventListener("click", function(): void {
     playSample("g.mp3");
 });
+document.querySelector("#a.whitekey").addEventListener("click", function(): void {
+    playSample("a.mp3");
+});
+document.querySelector("#b.whitekey").addEventListener("click", function(): void {
+    playSample("b.mp3");
+});
 
-document.querySelector("#af.blackkey_two").addEventListener("click", function(): void {
-    playSample("af.mp3");
-});
-document.querySelector("#bf.blackkey_two").addEventListener("click", function(): void {
-    playSample("bf.mp3");
-});
-document.querySelector("#df.blackkey_three").addEventListener("click", function(): void {
+document.querySelector("#cf.blackkey_two").addEventListener("click", function(): void {
     playSample("df.mp3");
 });
-document.querySelector("#ef.blackkey_three").addEventListener("click", function(): void {
+document.querySelector("#df.blackkey_two").addEventListener("click", function(): void {
     playSample("ef.mp3");
 });
-document.querySelector("#gf.blackkey_three").addEventListener("click", function(): void {
+document.querySelector("#ff.blackkey_three").addEventListener("click", function(): void {
     playSample("gf.mp3");
+});
+document.querySelector("#gf.blackkey_three").addEventListener("click", function(): void {
+    playSample("af.mp3");
+});
+document.querySelector("#af.blackkey_three").addEventListener("click", function(): void {
+    playSample("bf.mp3");
 });
 
 
@@ -47,7 +47,6 @@ var active: number = 0;
 var playbutton: HTMLDivElement = document.querySelector("#playbutton");
 let interval: number;
 let intervalstatus: boolean = false;
-let remixintervalstatus: boolean = false;
 
 
 function Interval(): void {
@@ -84,7 +83,6 @@ document.querySelector("#playbutton").addEventListener("click", function(): void
 }
 });
 
-
 document.querySelector("#play").addEventListener("click", Interval);
 
 
@@ -94,39 +92,35 @@ var remixsounds: string [] = ["a.mp3", "b.mp3", "c.mp3", "d.mp3", "e.mp3", "f.mp
 
 var btncontainer: HTMLDivElement = document.querySelector("#remix_container");
 let remixinterval: number;
-var newactive: number;
-var randomnumber: number = Math.floor(Math.random() * (12 - 1 + 1) + 1);
-
+var remixactive: number;
+let remixintervalstatus: boolean = false;
 
 function RemixInterval(): void {
 
-if (!remixinterval) {
+if (remixintervalstatus == false) {
+    remixintervalstatus = true;
     remixinterval = setInterval(playRemixInterval, 500);
+    } else {
+        remixintervalstatus = false;
+        if (remixactive != 0) {
+            remixactive = 0; 
+        }
     }
 }
     
-
 function playRemixInterval(): void {
-
-    if (btncontainer.className === "go") {
-        var remixsound: HTMLAudioElement = new Audio("assets/keyboard/" + remixsounds[newactive]);
-        remixsound.play();
-        newactive = (setInterval(function(): void {
-            Math.floor(Math.random() * (12 - 1 + 1) + 1);
-        },                       500));
+    var remixsound: HTMLAudioElement = new Audio("assets/keyboard/" + remixsounds[remixactive]);
+    remixsound.play();
+    remixactive = (setInterval(function(): void {
+        Math.floor(Math.random() * (11 - 1 + 1) + 1);
+    },                         500));
 
     }
+
+
+function randomnumber(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
-    
-function stopRemixInterval(): void {
-    clearInterval(remixinterval);
-    remixinterval = null;
-    if (newactive != 0) {
-        newactive = 0;
-    }
-}
+
 
 document.querySelector("#btn").addEventListener("click", playRemixInterval);
-document.querySelector("#stopbtn").addEventListener("click", stopRemixInterval);
-
-
