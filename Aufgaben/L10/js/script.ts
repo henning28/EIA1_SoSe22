@@ -14,13 +14,8 @@ document.querySelector("#addnewtask").addEventListener("click", function(): void
     clearInput(); 
 });
 
-document.querySelector(".fa-trash-can").addEventListener("click", deleteTask);
 
 // Functions
-
-function deleteTask (): void {
-    yes.remove();
-}
 
 function addTask(): void {
     let userInput: string = document.querySelector("input").value;
@@ -52,6 +47,7 @@ function addTask(): void {
     createcheck.classList.add("fa-regular");
     createcheck.classList.add("fa-circle");
     createcheck.classList.add("fa-2xl");
+    createcheck.classList.add("circle");
 
     var innertaskone: HTMLDivElement = document.querySelector(".task_one" + i);
     innertaskone.appendChild(createcheck);
@@ -67,6 +63,7 @@ function addTask(): void {
     createtrash.classList.add("fa-regular");
     createtrash.classList.add("fa-trash-can");
     createtrash.classList.add("fa-2xl");
+    createtrash.classList.add("trash" + i);
 
     var innertaskthree: HTMLDivElement = document.querySelector(".task_three" + i);
     innertaskthree.appendChild(createtrash);
@@ -75,10 +72,53 @@ function addTask(): void {
 
 }
 
-
 function clearInput (): void {
     document.querySelector("input").value = "";
 }
+
+
+// delete Task
+
+// function deleteTask (task: HTMLDivElement): void {
+//     console.log(task);
+//     task.remove();
+// }
+
+// document.querySelector(".trash" + i).addEventListener("click", function(): void {
+//     deleteTask(document.querySelector(".task_container" + i));
+//     i--;
+// }
+// );
+
+// for (let u: number; yes.classList.contains(".task_container"); u++) {
+//     u = i;
+//     console.log(u);
+//     document.querySelector(".trash" + u).addEventListener("click", function(): void {
+//         deleteTask(document.querySelector("task_container" + i));
+//     });
+// }
+
+
+
+
+// changeCheck
+
+// [...document.querySelectorAll(".circle")].forEach(function(item) {
+//     item.addEventListener("click", function(): void {
+//         console.log("circle clicked");
+//         changecheck();
+//     });
+// });
+
+let circles: NodeList = document.querySelectorAll(".circle");
+
+for (let s: number = 0; s < circles.length; s++) {
+    circles[s].addEventListener("click", function(): void {
+        console.log(s);
+        changecheck();
+    });
+}
+
 
 
 // document.querySelector(".task_container").addEventListener("click", function(): void {
