@@ -1,9 +1,7 @@
 let addbutton = document.getElementById("#addbutton");
-let count = 1;
-let i = 0;
-let arrayTasks = [];
 let taskdiv = document.getElementById("tasks");
 let yes = document.querySelector(".task_container");
+var i = 0;
 // EventListeners
 document.querySelector("#addnewtask").addEventListener("click", function () {
     addTask();
@@ -37,7 +35,6 @@ function addTask() {
     createcheck.classList.add("fa-2xl");
     createcheck.classList.add("circle");
     createcheck.setAttribute("id", String("circle" + i));
-    createcheck.addEventListener("click", changecheck);
     var innertaskone = document.querySelector(".task_one" + i);
     innertaskone.appendChild(createcheck);
     var createtext = document.createElement("p");
@@ -49,55 +46,39 @@ function addTask() {
     createtrash.classList.add("fa-regular");
     createtrash.classList.add("fa-trash-can");
     createtrash.classList.add("fa-2xl");
-    createtrash.setAttribute("id", String("trash" + i));
+    createtrash.setAttribute("id", String("trash"));
     createtrash.addEventListener("click", deleteTask);
     var innertaskthree = document.querySelector(".task_three" + i);
     innertaskthree.appendChild(createtrash);
-    document.getElementById("totaltasks").innerText = i + " in total";
+    createcheck.addEventListener("click", checktask);
+    function checktask() {
+        if (createcheck.getAttribute("class") == "fa-regular fa-circle-check fa-2xl") {
+            createcheck.setAttribute("class", "fa-regular fa-circle fa-2xl");
+        }
+        else {
+            createcheck.setAttribute("class", "fa-regular fa-circle-check fa-2xl");
+        }
+    }
+    createtrash.addEventListener("click", deleteTask);
+    createtrash.addEventListener("click", count);
+    function deleteTask() {
+        creatediv.parentElement.removeChild(creatediv);
+    }
 }
-function deleteTask() {
-    // let Element = document.querySelector("i:hover").id;
-    let Index = i;
-    let deleteTask = document.getElementById("task" + Index);
-    deleteTask.remove();
+// count
+let countnumber = document.getElementById("count");
+let newnumber = 0;
+document.querySelector("#addnewtask").addEventListener("click", add);
+function add() {
+    newnumber += 1;
+    countnumber.innerHTML = newnumber + " in total";
 }
+function count() {
+    newnumber -= 1;
+    countnumber.innerHTML = newnumber + " in total";
+}
+// clear Input
 function clearInput() {
     document.querySelector("input").value = "";
-}
-// delete Task
-// function deleteTask (task: HTMLDivElement): void {
-//     console.log(task);
-//     task.remove();
-// }
-// document.querySelector(".trash" + i).addEventListener("click", function(): void {
-//     deleteTask(document.querySelector(".task_container" + i));
-//     i--;
-// }
-// );
-// for (let u: number; yes.classList.contains(".task_container"); u++) {
-//     u = i;
-//     console.log(u);
-//     document.querySelector(".trash" + u).addEventListener("click", function(): void {
-//         deleteTask(document.querySelector("task_container" + i));
-//     });
-// }
-// changeCheck
-// [...document.querySelectorAll(".circle")].forEach(function(item) {
-//     item.addEventListener("click", function(): void {
-//         console.log("circle clicked");
-//         changecheck();
-//     });
-// });
-let circles = document.querySelectorAll(".circle");
-// document.querySelector(".task_container").addEventListener("click", function(): void {
-//     changecheck();
-// });
-function changecheck() {
-    if (document.querySelector("#circle" + i).getAttribute("class") == "fa-regular fa-circle-check fa-2xl") {
-        document.querySelector("#circle" + i).setAttribute("class", "fa-regular fa-circle fa-2xl");
-    }
-    else {
-        document.querySelector("#circle" + i).setAttribute("class", "fa-regular fa-circle-check fa-2xl");
-    }
 }
 //# sourceMappingURL=script.js.map
