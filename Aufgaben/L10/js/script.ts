@@ -11,7 +11,6 @@ document.querySelector("#addnewtask").addEventListener("click", function(): void
     clearInput(); 
 });
 
-
 // Functions
 
 function addTask(): void {
