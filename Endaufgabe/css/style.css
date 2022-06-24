@@ -33,6 +33,33 @@ header {
     width: 800px;
 }
 
+.difficulty_wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.difficulty {
+    background-color: blueviolet;
+    display: flex;
+    height: 100px;
+    width: 500px;
+    margin: 0px auto;
+    align-items: center;
+    border-radius: 25px;
+}
+
+.difficulty_words {
+    color: white;
+    margin: auto;
+    font-size: 50px;
+    font-family: 'Bitter';
+    font-weight: 800;
+}
+
+
 .points_container {
     display: flex;
     margin: 0 auto;
@@ -96,7 +123,7 @@ main {
     background-color: rgba(255, 255, 255, 0);
 }
 
-.words_container {
+.word_container {
     display: flex;
     flex-wrap: wrap;
     margin: auto;
@@ -113,6 +140,7 @@ main {
     border-radius: 25px;
     color: white;
     align-items: center;
+    transition: 80ms;
 }
 
 .word {
