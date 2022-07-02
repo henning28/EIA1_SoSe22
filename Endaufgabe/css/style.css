@@ -17,18 +17,25 @@ html, body {
 }
 
 header {
-    height: 200px;
+    height: 300px;
     width: 100%;
     margin: 0 auto;
     align-items: center;
     flex-shrink: 0;
-    background-color:rgba(230, 230, 230, 0)
+    background-color:rgba(230, 230, 230, 0);
+}
+
+.bar_container {
+    background-color: rgb(230, 230, 230);
+    margin: 60px auto;
+    height: 20px;
+    width: 800px;
+    border-radius: 10px;
 }
 
 .bar {
-    background-color: blueviolet;
+    background-color: rgb(138, 43, 226);
     border-radius: 10px;
-    margin: 60px auto;
     height: 20px;
     width: 800px;
 }
@@ -39,10 +46,11 @@ header {
     height: 600px;
     align-items: center;
     justify-content: space-evenly;
+    padding-top: 300px;
 }
 
 .difficulty {
-    background-color: blueviolet;
+    background-color: rgb(138, 43, 226);
     display: flex;
     height: 100px;
     width: 500px;
@@ -59,6 +67,18 @@ header {
     font-weight: 800;
 }
 
+.sentence_progresswrapper {
+    display: flex;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+.sentence_progress {
+    align-items: center;
+    margin: 0 auto;
+    font-family: 'Bitter';
+    font-weight: 500;
+}
 
 .points_container {
     display: flex;
@@ -80,10 +100,10 @@ main {
 
 .sentence_wrapper {
     margin: 0 auto;
-    padding: 50px 0px 0px 0px;
     height: 600px;
     background-color: rgba(0, 119, 255, 0);
     display: flex;
+    text-align: center;
     flex-direction: column;
 }
 
@@ -94,12 +114,22 @@ main {
     background-color: rgba(148, 52, 52, 0);
     height: 500px;
     width: 600px;
+    text-align: center;
     align-items: center;
+    
 }
 
 .first_sentence {
     margin: 0 auto;
     font-size: 55px;
+    font-family: 'Bitter';
+    font-weight: 800;
+    text-align: center;
+}
+
+.firstcongrats_sentence {
+    margin: 0 auto;
+    font-size: 70px;
     font-family: 'Bitter';
     font-weight: 800;
     text-align: center;
@@ -131,12 +161,21 @@ main {
     width: 700px;
 }
 
+.congratsword_container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    height: 600px;
+    width: 400px;
+    text-align: center;
+}
+
 .words {
     display: flex;
     width: 200px;
     height: 200px;
     margin: 0 auto;
-    background-color: blueviolet;
+    background-color: rgb(138, 43, 226);
     border-radius: 25px;
     color: white;
     align-items: center;
@@ -148,6 +187,14 @@ main {
     font-family: 'Bitter';
     font-weight: 800;
 }
+
+.congratstext {
+    margin: 0 auto;
+    font-size: 50px;
+    font-family: 'Bitter';
+    font-weight: 500;
+}
+
 
 footer {
     display: flex;

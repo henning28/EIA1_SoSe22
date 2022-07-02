@@ -1,35 +1,205 @@
-// add HTML
+// Variablen
+let bar: HTMLElement = document.getElementById("bar"); // Balken der dem User seinen Fortschritt anzeigt
 
-document.getElementById("leicht").addEventListener("click", addHTML);
-document.getElementById("mittel").addEventListener("click", addHTML);
-document.getElementById("schwer").addEventListener("click", addHTML);
+let sentenceindex: number = 0; // Zahl die angibt wie viele Sätze der User richtig hat & bei welchem Satz im sentence Array er ist
 
-function addHTML (): void {
+let sentencescomplete: number = 0; // Zahl die anzeigt wie viele Sätze der User abgeschlossen hat
+
+let difficultysentences: number = 0; // Zahl die anzeigt was die Gesamtzahl der Sätze ist (abhängig von der Schwierigkeitsstufe)
+
+let pointamount: number = 0; // Zahl die den Punktestand des Users zählt
+
+let wordarray: string[] = []; // leeres Array um die richtigen Wörter die der User anklickt zu speichern
+
+let barwidth: number = 0; // Zahl die die Breite des Fortschrittsbalken des Users speichert
+
+// Sentences
+
+interface Sentences { // Interface für die Sätze
+    sentence: string; // spanischer Satz den der User "ausfüllen" muss
+    translation: string; // deutsche Übersetzung die dem User oben angezeigt wird
+    words: string[]; // Satz in einzelne Wörter zerlegt in einem Array gespeichert
+    randomwords: string[]; // Wörter mit denen die "Wörterboxen" gefüllt werden
+}
+
+// Variable die alle Sätze in einem Array speichert
+
+let sentences: Sentences[] = [
+    {
+        sentence: "yo soy así",
+        translation: "Mir geht es gut",
+        words: ["yo", "soy", "así"],
+        randomwords: ["yo", "soy", "así"]
+    },
+    {
+        sentence: "Buenas noches",
+        translation: "Guten Abend",
+        words: ["Buenas", "noches"],
+        randomwords: ["Buenas", "noches"]
+    },
+    {
+        sentence: "¿Cómo te llamas?",
+        translation: "Wie heißt du?",
+        words: ["¿Cómo", "te", "llamas?"],
+        randomwords: ["¿Cómo", "te", "llamas?"]
+    },
+    {
+        sentence: "Que aproveche!",
+        translation: "Guten Appetit",
+        words: ["Que", "aproveche!"],
+        randomwords: ["Que", "aproveche!"]
+    },
+    {
+        sentence: "La cuenta, por favor",
+        translation: "Die Rechnung bitte",
+        words: ["La", "cuenta,", "por", "favor"],
+        randomwords: ["La", "cuenta,", "por", "favor"]
+    },
+    {
+        sentence: "Soy de berlino",
+        translation: "Ich komme aus Berlin",
+        words: ["Soy", "de", "berlino"],
+        randomwords: ["Soy", "de", "berlino"]
+    },
+    {
+        sentence: "No hablo mucho español",
+        translation: "Ich spreche nicht viel Spanisch",
+        words: ["No", "hablo", "mucho", "español"],
+        randomwords: ["No", "hablo", "mucho", "español"]
+    },
+    {
+        sentence: "Tengo una reserva",
+        translation: "Ich habe reserviert",
+        words: ["Tengo", "una", "reserva"],
+        randomwords: ["Tengo", "una", "reserva"]
+    },
+    {
+        sentence: "¿Cuánto cuesta esto?",
+        translation: "Was kostet das?",
+        words: ["¿Cuánto", "cuesta", "esto?"],
+        randomwords: ["¿Cuánto", "cuesta", "esto?"]
+    },
+    {
+        sentence: "Sólo estoy mirando",
+        translation: "Ich schaue mich nur um",
+        words: ["Sólo", "estoy", "mirando"],
+        randomwords: ["Sólo", "estoy", "mirando"]
+    },
+    {
+        sentence: "Para beber una cerveza, por favor",
+        translation: "Ich möchte ein Bier bestellen",
+        words: ["Para", "beber", "una", "cerveza,", "por", "favor"],
+        randomwords: ["Para", "beber", "una", "cerveza,", "por", "favor"]
+    },
+    {
+        sentence: "¿Hay una habitación libre?",
+        translation: "Haben Sie ein Zimmer frei?",
+        words: ["¿Hay", "una", "habitación", "libre?"],
+        randomwords: ["¿Hay", "una", "habitación", "libre?"]
+    },
+    {
+        sentence: "¿Cómo se pronuncia esto?",
+        translation: "Wie spricht man das aus?",
+        words: ["¿Cómo", "se", "pronuncia", "esto?"],
+        randomwords: ["¿Cómo", "se", "pronuncia", "esto?"]
+    },
+    {
+        sentence: "Dónde está la biblioteca?",
+        translation: "Wo ist die Bibliothek?",
+        words: ["Dónde", "está", "la", "biblioteca?"],
+        randomwords: ["Dónde", "está", "la", "biblioteca?"]
+    },
+    {
+        sentence: "Por favor, ¡limpie la habitación!",
+        translation: "Bitte reinigen Sie mein Zimmer",
+        words: ["Por", "favor,", "¡limpie", "la", "habitación!"],
+        randomwords: ["Por", "favor,", "¡limpie", "la", "habitación!"]
+    }
+];
+
+// ordnet die Sätze mit ihren Übersetzungen und Wörter zufällig an
+sentences.sort(() => Math.random() - 0.5);  // hier kommt entweder eine positive oder negative Zahl raus und die funktion sortiert sie zufällig
+
+// ordnet die Wörter mit denen die "Wörterboxen" gefüllt werden zufällig an
+randomizeArray(sentences[0].randomwords);
+randomizeArray(sentences[1].randomwords);
+randomizeArray(sentences[2].randomwords);
+randomizeArray(sentences[3].randomwords);
+randomizeArray(sentences[4].randomwords);
+randomizeArray(sentences[5].randomwords);
+randomizeArray(sentences[6].randomwords);
+randomizeArray(sentences[7].randomwords);
+randomizeArray(sentences[8].randomwords);
+randomizeArray(sentences[9].randomwords);
+randomizeArray(sentences[10].randomwords);
+randomizeArray(sentences[11].randomwords);
+randomizeArray(sentences[12].randomwords);
+randomizeArray(sentences[13].randomwords);
+randomizeArray(sentences[14].randomwords);
+
+function randomizeArray (array: string[]): void {
+    array.sort(() => Math.random() - 0.5); // hier kommt entweder eine positive oder negative Zahl raus und die funktion sortiert sie zufällig
+}
+
+// addHTML: bei jeder Schwierigkeitsstufe gleich, das Grundgerüst wird ausgelegt
+// sentenceAmount: abhängig davon welche Schwierigkeitsstufe der User auswählt werden die Anzahl der Sätze festgelegt
+document.getElementById("leicht").addEventListener("click", function (): void {
+    addHTML();
+    sentenceAmount(5);
+});
+document.getElementById("mittel").addEventListener("click", function (): void {
+    addHTML();
+    sentenceAmount(10);
+});
+document.getElementById("schwer").addEventListener("click", function (): void {
+    addHTML();
+    sentenceAmount(15);
+});
+
+
+// Grundgerüst in das später die zwei Sätze und Wörterboxen eingefügt werden
+function addHTML(): void {
+
+    bar.style.width = "0px"; // die Fortschrittsleiste wird auf 0 gesetzt da der User noch keinen Satz abgeschlossen hat
 
     // Schwierigkeitsstufen entfernen
-
     let difficulties: HTMLDivElement = document.querySelector(".difficulty_wrapper");
     difficulties.parentNode.removeChild(difficulties);
 
-    // Punktestand erstellen
 
+    // Sätzefortschritt erstellen
+    var createsentenceprogresswrapper: HTMLDivElement = document.createElement("div");
+    createsentenceprogresswrapper.className = "sentence_progresswrapper";
+    document.getElementById("header").appendChild(createsentenceprogresswrapper);
+
+    var createsentenceprogress: HTMLParagraphElement = document.createElement("p");
+    createsentenceprogress.className = "sentence_progress";
+    createsentenceprogress.innerHTML = "Satz 0/5";
+    createsentenceprogress.setAttribute("id", String("sentenceprogress"));
+    createsentenceprogresswrapper.appendChild(createsentenceprogress);
+
+
+    // Punktestand erstellen
     var createpointscontainer: HTMLDivElement = document.createElement("div");
     createpointscontainer.className = "points_container";
     document.getElementById("header").appendChild(createpointscontainer);
 
     var createpoints: HTMLParagraphElement = document.createElement("p");
     createpoints.className = "points";
-    createpoints.innerHTML = "Points : 0";
+    createpoints.setAttribute("id", String("points"));
+    createpoints.innerHTML = "Punkte: 0";
     createpointscontainer.appendChild(createpoints);
 
-    // Sätze erstellen
 
+    // Sätze erstellen
     var createsentencewrapper: HTMLDivElement = document.createElement("div");
     createsentencewrapper.className = "sentence_wrapper";
+    createsentencewrapper.setAttribute("id", String("sentence_wrapper"));
     document.getElementById("main").appendChild(createsentencewrapper);
 
     var createsentencecontainer: HTMLDivElement = document.createElement("div");
     createsentencecontainer.className = "sentence_container";
+    createsentencecontainer.setAttribute("id", String("sentence_container"));
     createsentencewrapper.appendChild(createsentencecontainer);
 
     var createfirstsentence: HTMLParagraphElement = document.createElement("p");
@@ -44,18 +214,33 @@ function addHTML (): void {
 
     var createwordboxcontainer: HTMLDivElement = document.createElement("div");
     createwordboxcontainer.className = "wordbox_container";
+    createwordboxcontainer.setAttribute("id", String("wordbox_container"));
     document.getElementById("main").appendChild(createwordboxcontainer);
 
     var createwordcontainer: HTMLDivElement = document.createElement("div");
     createwordcontainer.className = "word_container";
+    createwordcontainer.setAttribute("id", String("word_container"));
     createwordboxcontainer.appendChild(createwordcontainer);
 
-    // Wörter erstellen
+    addTranslation();
 
+    addWordboxes();
+
+    fillwordboxes();
+}
+
+
+// deutsche Übersetzung des sentenceindex'en Satzes wird in "first_sentence" angezeigt
+function addTranslation(): void { 
+    document.getElementById("first_sentence").innerHTML = sentences[sentenceindex].translation;
+}
+
+// 6 Wörterboxen werden erstellt
+function addWordboxes(): void {
     var createfirstwords: HTMLDivElement = document.createElement("div");
     createfirstwords.className = "words";
     createfirstwords.setAttribute("id", String("firstwords"));
-    createwordcontainer.appendChild(createfirstwords);
+    document.querySelector(".word_container").appendChild(createfirstwords);
 
     var createfirstword: HTMLParagraphElement = document.createElement("p");
     createfirstword.setAttribute("id", String("firstword"));
@@ -66,7 +251,7 @@ function addHTML (): void {
     var createsecondwords: HTMLDivElement = document.createElement("div");
     createsecondwords.className = "words";
     createsecondwords.setAttribute("id", String("secondwords"));
-    createwordcontainer.appendChild(createsecondwords);
+    document.querySelector(".word_container").appendChild(createsecondwords);
 
     var createsecondword: HTMLParagraphElement = document.createElement("p");
     createsecondword.setAttribute("id", String("secondword"));
@@ -77,7 +262,7 @@ function addHTML (): void {
     var createthirdwords: HTMLDivElement = document.createElement("div");
     createthirdwords.className = "words";
     createthirdwords.setAttribute("id", String("thirdwords"));
-    createwordcontainer.appendChild(createthirdwords);
+    document.querySelector(".word_container").appendChild(createthirdwords);
 
     var createthirdword: HTMLParagraphElement = document.createElement("p");
     createthirdword.setAttribute("id", String("thirdword"));
@@ -88,7 +273,7 @@ function addHTML (): void {
     var createfourthwords: HTMLDivElement = document.createElement("div");
     createfourthwords.className = "words";
     createfourthwords.setAttribute("id", String("fourthwords"));
-    createwordcontainer.appendChild(createfourthwords);
+    document.querySelector(".word_container").appendChild(createfourthwords);
 
     var createfourthword: HTMLParagraphElement = document.createElement("p");
     createfourthword.setAttribute("id", String("fourthword"));
@@ -99,7 +284,7 @@ function addHTML (): void {
     var createfifthwords: HTMLDivElement = document.createElement("div");
     createfifthwords.className = "words";
     createfifthwords.setAttribute("id", String("fifthwords"));
-    createwordcontainer.appendChild(createfifthwords);
+    document.querySelector(".word_container").appendChild(createfifthwords);
 
     var createfifthword: HTMLParagraphElement = document.createElement("p");
     createfifthword.setAttribute("id", String("fifthword"));
@@ -110,104 +295,308 @@ function addHTML (): void {
     var createsixthwords: HTMLDivElement = document.createElement("div");
     createsixthwords.className = "words";
     createsixthwords.setAttribute("id", String("sixthwords"));
-    createwordcontainer.appendChild(createsixthwords);
+    document.querySelector(".word_container").appendChild(createsixthwords);
 
     var createsixthword: HTMLParagraphElement = document.createElement("p");
     createsixthword.setAttribute("id", String("sixthword"));
     createsixthword.className = "word";
     createsixthwords.appendChild(createsixthword);
 
-    // EventListeners für die Button Animation
+    // EventListeners der Wörterboxen
 
-    createfirstwords.addEventListener("click", function (): void {animatebutton("firstwords"); });
-    createsecondwords.addEventListener("click", function (): void {animatebutton("secondwords"); });
-    createthirdwords.addEventListener("click", function (): void {animatebutton("thirdwords"); });
-    createfourthwords.addEventListener("click", function (): void {animatebutton("fourthwords"); });
-    createfifthwords.addEventListener("click", function (): void {animatebutton("fifthwords"); });
-    createsixthwords.addEventListener("click", function (): void {animatebutton("sixthwords"); });
+    createfirstwords.addEventListener("click", function (): void {
 
-    // Satz 1
+        // Wenn Element existiert dann führe Funktion aus
+        if (typeof(createfirstwords) != "undefined" && createfirstwords != null) {
+            // Funktion für die Buttonclick Animation
+            createfirstwords.style.transform = "scale(0.9)";
+            setTimeout(function(): void {
+                createfirstwords.style.transform = "scale(1)";
+            },         80); }
 
-    createfirstword.innerHTML = "yo";
-    createsecondword.innerHTML = "soy";
-    createthirdword.innerHTML = "así";
+        mainFunction(sentences[sentenceindex].randomwords[0]); // füge Wort des Satzes dem spanischen Satz hinzuzufügen
+    });
 
-}
+    createsecondwords.addEventListener("click", function (): void {
 
-// Sentences
+        if (typeof(createsecondwords) != "undefined" && createsecondwords != null) {
+            createsecondwords.style.transform = "scale(0.9)";
+            setTimeout(function(): void {
+                createsecondwords.style.transform = "scale(1)";
+            },         80); }
 
-interface Sentences {
-    sentence: string;
-    translation: string;
-    words: string[];
-}
+        mainFunction(sentences[sentenceindex].randomwords[1]);
+    });
 
-let yosoyasi: Sentences = {
-    sentence: "yo soy así",
-    translation: "Mir geht es gut",
-    words: ["yo", "soy", "así"]
-};
+    createthirdwords.addEventListener("click", function (): void {
 
-let secondsentence: HTMLElement = document.getElementById("second_sentence");
+        if (typeof(createthirdwords) != "undefined" && createthirdwords != null) {
+            createthirdwords.style.transform = "scale(0.9)";
+            setTimeout(function(): void {
+                createthirdwords.style.transform = "scale(1)";
+            },         80); }
 
-// erster Satz "yo soy así"
+        mainFunction(sentences[sentenceindex].randomwords[2]); 
+    });
 
+    createfourthwords.addEventListener("click", function (): void {
 
-// document.getElementById("firstwords").addEventListener("click", function(): void {
-//     addwordtosentence(" soy");
-// });
-// document.getElementById("secondwords").addEventListener("click", function(): void {
-//     addwordtosentence("yo");
-// });
-// document.getElementById("thirdwords").addEventListener("click", function(): void {
-//     addwordtosentence(" así");
-// });
+        if (typeof(createfourthwords) != "undefined" && createfourthwords != null) {
+            createfourthwords.style.transform = "scale(0.9)";
+            setTimeout(function(): void {
+                createfourthwords.style.transform = "scale(1)";
+            },         80); }
 
-// Funktion für die Animation des Klicken auf Wörter
+        mainFunction(sentences[sentenceindex].randomwords[3]);
+    });
 
-function animatebutton(idname: string): void {
-    document.getElementById(idname).style.transform = "scale(0.9)";
-    setTimeout(function(): void {
-        document.getElementById(idname).style.transform = "scale(1)";
-    },         80);
-}
+    createfifthwords.addEventListener("click", function (): void {
 
-// let sentenceinput: string = document.getElementById("second_sentence").innerHTML;
+        if (typeof(createfifthwords) != "undefined" && createfifthwords != null) {
+            createfifthwords.style.transform = "scale(0.9)";
+            setTimeout(function(): void {
+                createfifthwords.style.transform = "scale(1)";
+            },         80); }
 
-let wordarray: string[] = [];
+        mainFunction(sentences[sentenceindex].randomwords[4]);
+    });
 
-function addwordtosentence(newword: string): void {
-    let sentenceinput: string = document.getElementById("second_sentence").innerHTML;
-    secondsentence.innerHTML = sentenceinput + newword;
-    wordarray.push(newword);
-    // console.log(wordarray);
-    if (wordarray.length == 1) {
-        if (wordarray.indexOf(" yo") != 0) {
-            alert("wrong word, try again");
-            secondsentence.innerHTML = "";
-            wordarray.length = 0;
-            } 
-        console.log(secondsentence.innerHTML); }
-
-    if (wordarray.length == 2) {
-        if (wordarray.indexOf(" soy") != 1) {
-            alert("wrong word, try again");
-            secondsentence.innerHTML = "yo";
-            // secondsentence.innerHTML = "";
-            wordarray.length = 1;
-        } 
-        console.log(secondsentence.innerHTML); }
+    createsixthwords.addEventListener("click", function (): void {
     
-    if (wordarray.length == 3) {
-        if (wordarray.indexOf(" así") != 3) {
-            // alert("wrong word, try again");
-            // secondsentence.innerHTML = "yo soy";
-            // secondsentence.innerHTML = "";
-            // wordarray.length = 2;
-            // console.log(wordarray); } 
-            // console.log("yesss");
-        }
-        console.log(secondsentence.innerHTML); } 
+        if (typeof(createsixthwords) != "undefined" && createsixthwords != null) {
+            createfifthwords.style.transform = "scale(0.9)";
+            setTimeout(function(): void {
+                createfifthwords.style.transform = "scale(1)";
+            },         80); }
+
+        mainFunction(sentences[sentenceindex].randomwords[5]);
+    });
 }
 
-// secondsentence.textContent.includes
+// Fülle die Wörterboxen mit zufälligen Wörtern des Satzes
+function fillwordboxes(): void {
+    document.getElementById("firstword").innerHTML = sentences[sentenceindex].randomwords[0];
+    document.getElementById("secondword").innerHTML = sentences[sentenceindex].randomwords[1];
+    document.getElementById("thirdword").innerHTML = sentences[sentenceindex].randomwords[2];
+    document.getElementById("fourthword").innerHTML = sentences[sentenceindex].randomwords[3];
+    document.getElementById("fifthword").innerHTML = sentences[sentenceindex].randomwords[4];
+    document.getElementById("sixthword").innerHTML = sentences[sentenceindex].randomwords[5];
+
+    // Wenn ein Wort nicht definiert ist dann entferne die zugehörige Wörterbox
+
+    if (sentences[sentenceindex].randomwords[0] == undefined) {
+        document.getElementById("firstwords").parentNode.removeChild(document.getElementById("firstwords")); }
+
+    if (sentences[sentenceindex].randomwords[1] == undefined) {
+        document.getElementById("secondwords").parentNode.removeChild(document.getElementById("secondwords")); }
+
+    if (sentences[sentenceindex].randomwords[2] == undefined) {
+        document.getElementById("thirdwords").parentNode.removeChild(document.getElementById("thirdwords")); }
+
+    if (sentences[sentenceindex].randomwords[3] == undefined) {
+        document.getElementById("fourthwords").parentNode.removeChild(document.getElementById("fourthwords")); }
+
+    if (sentences[sentenceindex].randomwords[4] == undefined) {
+        document.getElementById("fifthwords").parentNode.removeChild(document.getElementById("fifthwords")); }
+
+    if (sentences[sentenceindex].randomwords[5] == undefined) {
+        document.getElementById("sixthwords").parentNode.removeChild(document.getElementById("sixthwords")); }
+}
+
+
+// Funktion um Anzahl der Sätze zu zeigen (Abhängig davon welche Schwierigkeit der User auswählt)
+function sentenceAmount(amount: number): void {
+    document.querySelector(".sentence_progress").innerHTML = "Satz 0/" + amount;
+    difficultysentences = amount; 
+}
+
+
+// Hauptfunktion
+function mainFunction(newword: string): void {
+
+    // Wörter als Variablen speichern
+    let firstwords: HTMLElement = document.getElementById("firstwords");
+    let secondwords: HTMLElement = document.getElementById("secondwords");
+    let thirdwords: HTMLElement = document.getElementById("thirdwords");
+    let fourthwords: HTMLElement = document.getElementById("fourthwords");
+    let fifthwords: HTMLElement = document.getElementById("fifthwords");
+    let sixthwords: HTMLElement = document.getElementById("sixthwords");
+
+    // Variablen
+    let secondsentence: HTMLElement = document.getElementById("second_sentence");
+    let sentenceinput: string = document.getElementById("second_sentence").innerHTML;
+    let points: HTMLElement = document.getElementById("points"); // Punkte des Users
+
+    secondsentence.innerHTML = sentenceinput + newword; // Füge dem zweiten Satz das neue Wort zusätzlich hinzu
+
+    wordarray.push(newword); // Füge das neue Wort dem wordarray hinzu
+
+    if (wordarray.length == 1) { // Wenn das array 1 Wort lang ist dann...
+        if (wordarray.indexOf(sentences[sentenceindex].words[0]) != 0) { // Wenn das angeklickte Wort nicht die Stelle 0 im sentencen[x].words hat dann...
+            alert("wrong word, try again"); // alert
+            secondsentence.innerHTML = ""; // falsches Wort also leere den Inhalt des zweiten Satzes wieder
+            wordarray.length = 0; // falsches Wort deshalb streiche es aus dem Array (leere das Array)
+            pointamount -= 1; // falsches Wort also Punktestand -1
+            } else {
+                pointamount += 1; // richtiges Wort also Punktestand +1
+            }
+        secondsentence.innerHTML = secondsentence.innerHTML + " "; // ...füge ein Leerzeichen ein damit die Wörter nicht zusammenstehen
+    }
+
+    if (wordarray.length == 2) { // Wenn das array 2 Wörter lang ist dann...
+        if (wordarray.indexOf(sentences[sentenceindex].words[1]) != 1) { // Wenn das angeklickte Wort nicht die Stelle 1 im sentencen[x].words hat dann...
+            alert("wrong word, try again");
+            secondsentence.innerHTML = sentences[sentenceindex].words[0]; // setze den Satzinhalt auf die richtigen Wörter davor zurück
+            wordarray.length = 1; // behalte nur das erste Wort bei
+            pointamount -= 1;
+        } else {
+            pointamount += 1;
+        }
+        secondsentence.innerHTML = secondsentence.innerHTML + " ";
+    }
+    
+    if (wordarray.length == 3) { // Wenn das array 3 Wörter lang ist dann...
+        if (wordarray.indexOf(sentences[sentenceindex].words[2]) != 2) { // Wenn das angeklickte Wort nicht die Stelle 2 im sentencen[x].words hat dann...
+            alert("wrong word, try again");
+            secondsentence.innerHTML = sentences[sentenceindex].words[0] + " " + sentences[sentenceindex].words[1];
+            wordarray.length = 2; // behalte nur die ersten zwei Wörter bei
+            pointamount -= 1;
+        } else {
+            pointamount += 1;
+        }
+        secondsentence.innerHTML = secondsentence.innerHTML + " "; 
+    }
+
+    if (wordarray.length == 4) { // Wenn das array 4 Wörter lang ist dann...
+        if (wordarray.indexOf(sentences[sentenceindex].words[3]) != 3) { // Wenn das angeklickte Wort nicht die Stelle 3 im sentencen[x].words hat dann...
+            alert("wrong word, try again");
+            secondsentence.innerHTML = sentences[sentenceindex].words[0] + " " + sentences[sentenceindex].words[1] + " " + sentences[sentenceindex].words[2]; // setze den Satzinhalt auf die richtigen Wörter davor zurück
+            wordarray.length = 3; // behalte nur die ersten drei Wörter bei
+            pointamount -= 1;
+        } else {
+            pointamount += 1;
+        }
+        secondsentence.innerHTML = secondsentence.innerHTML + " "; 
+    }
+
+    if (wordarray.length == 5) { // Wenn das array 5 Wörter lang ist dann...
+        if (wordarray.indexOf(sentences[sentenceindex].words[4]) != 4) { // Wenn das angeklickte Wort nicht die Stelle 4 im sentencen[x].words hat dann...
+            alert("wrong word, try again");
+            secondsentence.innerHTML = sentences[sentenceindex].words[0] + " " + sentences[sentenceindex].words[1] + " " + sentences[sentenceindex].words[2] + " " + sentences[sentenceindex].words[3];
+            wordarray.length = 4; // behalte nur die ersten vier Wörter bei
+            pointamount -= 1;
+        } else {
+            pointamount += 1;
+        }
+        secondsentence.innerHTML = secondsentence.innerHTML + " "; 
+    }
+
+    if (pointamount == -1) { // Punktestand des Users kann nicht ins negative gehen
+        pointamount = 0; // Falls der Punktestand -1 beträgt dann setze ihn auf 0
+    }
+
+    points.innerHTML = "Punkte: " + pointamount; // Punktestand des Users updaten
+
+    // Wenn der Satzinhalt dem Satz entspricht (mit Leerzeichen davor oder danach) dann...
+    if (secondsentence.innerHTML == sentences[sentenceindex].sentence ||
+        secondsentence.innerHTML == " " + sentences[sentenceindex].sentence ||
+        secondsentence.innerHTML == sentences[sentenceindex].sentence + " "  ||
+        secondsentence.innerHTML == " " + sentences[sentenceindex].sentence + " ") {
+
+        wordarray.length = 0; // leere das Wortarray
+
+        secondsentence.innerHTML = ""; // leere den Satzinhalt
+        
+        if (difficultysentences == 5) { // Falls die Schwierigkeitsstufe leicht ist (5 Sätze hat) dann...
+            barwidth = barwidth + 160; // ...addiere mit jedem richtigen Satz 160px zur breite des Fortschrittbalken
+            bar.style.width = barwidth + "px";
+        }
+
+        if (difficultysentences == 10) { // Falls die Schwierigkeitsstufe mittel ist (10 Sätze hat) dann...
+            barwidth = barwidth + 80; // ...addiere mit jedem richtigen Satz 80px zur breite des Fortschrittbalken
+            bar.style.width = barwidth + "px";
+        }
+
+        if (difficultysentences == 15) { // Falls die Schwierigkeitsstufe schwer ist (15 Sätze hat) dann...
+            barwidth = barwidth + 53.33; // ...addiere mit jedem richtigen Satz 53px zur breite des Fortschrittbalken
+            bar.style.width = barwidth + "px";
+        }
+
+        sentencescomplete += 1; // ändere die Anzahl der abgeschlossenen Sätze um +1
+        document.getElementById("sentenceprogress").innerHTML = "Satz " + sentencescomplete + "/" + difficultysentences; // update die Anzahl der abgeschlossenen Sätze auf HTML-Ebene
+
+        secondsentence.style.backgroundColor = "rgb(152, 236, 152)"; // Färbe den Hintergrund grün für 1 Sekunde (hängt mit SetTimeout zusammen)
+        secondsentence.innerHTML = sentences[sentenceindex].sentence; // Zeige den ganzen Satz für 1 Sekunde an (hängt mit SetTimeout zusammen)
+        setTimeout(function(): void {
+            secondsentence.innerHTML = "";
+            secondsentence.style.backgroundColor = "rgb(230, 230, 230)";
+        },         1000);
+
+        // entferne die ersten zwei Wörterboxen (nicht wie bei den unteren da jerder Satz mindestens zwei Wörter hat)
+        firstwords.parentNode.removeChild(firstwords);
+        secondwords.parentNode.removeChild(secondwords);
+
+        // prüfe ob die Wörterbox exisitiert, wenn ja dann entferne sie
+        if (typeof(thirdwords) != "undefined" && thirdwords != null) {
+            thirdwords.parentNode.removeChild(thirdwords);
+        }
+        if (typeof(fourthwords) != "undefined" && fourthwords != null) {
+            fourthwords.parentNode.removeChild(fourthwords);
+        }
+        if (typeof(fifthwords) != "undefined" && fifthwords != null) {
+            fifthwords.parentNode.removeChild(fifthwords);
+        }
+        if (typeof(sixthwords) != "undefined" && sixthwords != null) {
+            sixthwords.parentNode.removeChild(sixthwords);
+        }
+
+        // update die Zahl der Sätze die der User richtig hat / bei welchem Satz im Array der User ist
+        sentenceindex += 1;
+
+        if (sentencescomplete == difficultysentences) { // falls alle Sätze abgeschlossen sind führe folgende Funktionen aus
+
+            removeHTML();
+
+            addCongratulations();
+
+        } else { // falls nicht dann wiederhole Prozess (Wörterboxen hinzufügen, Wörterboxen mit randomwords des Satzes füllen, überflüssige Wörterboxen entfernen und Übersetzung anzeigen)
+
+            addWordboxes();
+
+            fillwordboxes();
+
+            addTranslation();
+    
+        }
+    }
+}
+
+// Wörterboxen und Sätze entfernen
+function removeHTML(): void {
+    document.getElementById("sentence_container").parentNode.removeChild(document.getElementById("sentence_container"));
+    document.getElementById("word_container").parentNode.removeChild(document.getElementById("word_container"));
+    document.getElementById("sentenceprogress").parentNode.removeChild(document.getElementById("sentenceprogress"));
+    document.getElementById("points").parentNode.removeChild(document.getElementById("points"));
+}
+
+// Congratulation-Screen anzeigen
+function addCongratulations(): void {
+    var createcongratulations: HTMLDivElement = document.createElement("div"); // sentence_container erstellen
+    createcongratulations.className = "sentence_container";
+    createcongratulations.setAttribute("id", String("sentence_container"));
+    document.getElementById("sentence_wrapper").appendChild(createcongratulations);
+
+    var createcongratulationstext: HTMLElement = document.createElement("p"); // Überschrift erstellen
+    createcongratulationstext.className = "firstcongrats_sentence";
+    createcongratulationstext.innerHTML = "Congratulations!"; // Überschrift schreiben
+    createcongratulations.appendChild(createcongratulationstext);
+
+    var createcongrats: HTMLDivElement = document.createElement("div"); // congratsword_container erstellen
+    createcongrats.className = "congratsword_container";
+    document.getElementById("wordbox_container").appendChild(createcongrats);
+
+    var createcongratstext: HTMLElement = document.createElement("p");
+    createcongratstext.className = "congratstext";
+    createcongratstext.innerHTML = "Sie haben eine Gesamtpunktzahl von " + pointamount + " erreicht!"; // Zeigt die Gesamtpunktzahl des Nutzers an
+    createcongrats.appendChild(createcongratstext);
+}

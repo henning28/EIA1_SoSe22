@@ -1,3 +1,5 @@
+namespace l09 {   
+
 // function playSample(file: string): void {
 //     var sound: HTMLAudioElement = new Audio("assets/keyboard/" + file);
 //     sound.play();
@@ -102,3 +104,5 @@ function randomfunction (min: number, max: number): number {
 }
 
 document.querySelector("#btn").addEventListener("click", RemixInterval);
+
+}
